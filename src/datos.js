@@ -14,7 +14,7 @@ export const revista = {
   alumnos: ['Lara Moyano', 'Luciano Leichner'],
   curso: '3° C',
   materia: 'Construcción de la Ciudadanía',
-  escuela: 'Instituto Almafuerte',
+  escuela: 'Instituto Almafuerte Pilar',
 }
 
 // ------------------------------------------------------------

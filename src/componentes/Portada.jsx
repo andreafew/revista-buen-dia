@@ -18,6 +18,7 @@ export default function Portada() {
 
       <div className="portada__centro">
         <p className="portada__antetitulo">{revista.investigacion}</p>
+        <p className="portada__revista">Revista</p>
         <h1 className="portada__titulo">{revista.nombre}</h1>
         <p className="portada__bajada">{revista.bajada}</p>
       </div>
@@ -35,7 +36,7 @@ export default function Portada() {
       </ul>
 
       <div className="portada__autores">
-        <span>{revista.alumnos.join(' y ')}</span>
+        <span>{revista.alumnos.join(' - ')}</span>
         <span className="portada__curso">{revista.curso}</span>
       </div>
     </div>

@@ -205,6 +205,15 @@ p { margin: 0 0 1em; }
   margin-bottom: 12px;
 }
 
+.portada__revista {
+  font-weight: 900;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  text-transform: uppercase;
+  margin: 6px 0 0;
+}
+
 .portada__titulo {
   font-size: clamp(4rem, 15vw, 9.5rem);
   font-weight: 900;
