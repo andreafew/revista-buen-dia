@@ -9,7 +9,7 @@ export const dibujo = (nombre) => `${import.meta.env.BASE_URL}dibujos/${nombre}.
 export const revista = {
   nombre: 'Buen Día',
   bajada: 'Desayunos y meriendas que recomendamos',
-  investigacion: 'Investigación: Alimentación, nutrición y etiquetado',
+  investigacion: 'Alimentación y nutrición',
   edicion: 'Edición N.º 1 · Octubre 2026',
   alumnos: ['Lara Moyano', 'Luciano Leichner'],
   curso: '3° C',
