@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+            width="400"
+      height="360"
+      viewBox="0 0 400 360"
+      role="img"
+      aria-label="Escudo del Instituto Almafuerte"
+    >
+      <defs>
+        
+        <path
+          id="forma-escudo"
+          d="M62 62 Q128 22 200 52 Q272 22 338 62 L344 182 Q342 280 200 344 Q58 280 56 182 Z"
+        />
+        <clipPath id="recorte-escudo">
+          <use href="#forma-escudo" />
+        </clipPath>
+        
+        <path id="curva-cinta" d="M58 146 Q200 176 342 136" />
+      </defs>
+
+      
+      <polygon points="66,112 6,116 30,138 8,162 66,158" fill="#121212" />
+      <polygon points="334,100 394,100 370,124 394,148 334,146" fill="#121212" />
+
+      
+      <use href="#forma-escudo" fill="#2456B8" />
+      <rect
+        x="200" y="0" width="200" height="360"
+        fill="#1C47A0"
+        clip-path="url(#recorte-escudo)"
+      />
+      <use href="#forma-escudo" fill="none" stroke="#0B1530" stroke-width="9" stroke-linejoin="round" />
+
+      
+      <path
+        d="M52 124 Q200 154 348 114 L348 158 Q200 198 52 168 Z"
+        fill="#121212"
+      />
+      <path
+        d="M52 124 Q200 154 348 114"
+        fill="none" stroke="#3a3a3a" stroke-width="2"
+      />
+
+      
+      <g fill="#FFFFFF" text-anchor="middle">
+        <text
+          x="200" y="104"
+          font-family="Georgia, serif"
+          font-weight="700" font-size="19" letter-spacing="0.5"
+        >
+          Asociación Cooperadora
+        </text>
+        <text
+          font-family="'Brush Script MT', cursive"
+          font-size="34"
+        >
+          <textPath href="#curva-cinta" startOffset="50%" text-anchor="middle">
+            Instituto Almafuerte
+          </textPath>
+        </text>
+        <text
+          x="200" y="204"
+          font-family="Georgia, serif"
+          font-size="18" letter-spacing="3" opacity="0.9"
+        >
+          1953
+        </text>
+        <text
+          x="200" y="280"
+          font-family="Georgia, serif"
+          font-weight="700" font-size="84" letter-spacing="2"
+          stroke="#0B1530" stroke-width="2.5" paint-order="stroke"
+        >
+          IAP
+        </text>
+        <text
+          x="200" y="307"
+          font-family="Georgia, serif"
+          font-weight="700" font-size="17" letter-spacing="1"
+        >
+          Secundaria
+        </text>
+      </g>
+    </svg>

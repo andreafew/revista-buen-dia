@@ -1,0 +1,893 @@
+/* ============================================================
+   ESTILOS DE LA REVISTA "BUEN DÍA"
+   Colores tomados del escudo del Instituto Almafuerte.
+   ============================================================ */
+
+:root {
+  --azul: #2456b8;          /* azul claro del escudo */
+  --azul-oscuro: #1c47a0;   /* azul oscuro del escudo */
+  --marino: #0b1530;        /* borde del escudo */
+  --negro: #121212;         /* cinta del escudo */
+  --tinta: #1a2238;         /* color del texto */
+  --gris: #59627a;
+  --celeste: #e9effc;
+  --celeste-2: #cfdcf6;
+  --blanco: #ffffff;
+  --fondo: #e3e9f5;
+
+  --letra-titulos: 'Playfair Display', Georgia, serif;
+  --letra-texto: 'Nunito', 'Segoe UI', Arial, sans-serif;
+  --letra-script: 'Great Vibes', cursive;
+
+  --alto-nav: 68px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--letra-texto);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+button { font: inherit; cursor: pointer; }
+
+:focus-visible { outline: 3px solid #8fb2ff; outline-offset: 2px; }
+
+h1, h2, h3 { font-family: var(--letra-titulos); line-height: 1.15; margin: 0; }
+
+p { margin: 0 0 1em; }
+
+/* ------------------------------------------------------------
+   ESCENARIO Y HOJA
+   ------------------------------------------------------------ */
+.escenario {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px calc(var(--alto-nav) + 40px);
+  outline: none;
+  overflow-x: hidden;
+}
+
+.hoja {
+  position: relative;
+  width: min(980px, 100%);
+  min-height: calc(100dvh - var(--alto-nav) - 72px);
+  background: var(--blanco);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(11, 21, 48, 0.08), 0 18px 40px -12px rgba(11, 21, 48, 0.25);
+  padding: 40px 56px 64px;
+}
+
+.hoja__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--negro);
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+}
+
+.hoja__marca {
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--azul-oscuro);
+}
+
+.hoja__seccion {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.hoja__pie {
+  position: absolute;
+  right: 56px;
+  bottom: 22px;
+  font-family: var(--letra-titulos);
+  font-weight: 700;
+  color: var(--azul);
+}
+
+/* Animación al pasar de página */
+.hoja--adelante { animation: entrar-derecha 0.45s ease both; }
+.hoja--atras { animation: entrar-izquierda 0.45s ease both; }
+
+@keyframes entrar-derecha {
+  from { opacity: 0; transform: translateX(40px) rotate(0.6deg); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes entrar-izquierda {
+  from { opacity: 0; transform: translateX(-40px) rotate(-0.6deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoja--adelante, .hoja--atras { animation: none; }
+}
+
+.titulo-pagina {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--marino);
+  margin-bottom: 20px;
+}
+
+/* Efecto "sticker": borde blanco alrededor de los dibujos */
+.sticker,
+.portada__dibujo,
+.contratapa__dibujos img {
+  filter:
+    drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff)
+    drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+    drop-shadow(0 6px 10px rgba(11, 21, 48, 0.35));
+}
+
+/* ------------------------------------------------------------
+   PORTADA
+   ------------------------------------------------------------ */
+.hoja--portada {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.12), transparent 40%),
+    linear-gradient(160deg, var(--azul) 0%, var(--azul-oscuro) 55%, #13306f 100%);
+  color: var(--blanco);
+  overflow: hidden;
+  display: flex;
+  padding: 32px 48px 40px;
+}
+
+.portada {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.portada__arriba {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+  padding-bottom: 16px;
+}
+
+.portada__escudo { flex-shrink: 0; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); }
+
+.portada__datos-escuela {
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.portada__datos-escuela span:first-child {
+  font-family: var(--letra-script);
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.1;
+}
+.portada__datos-escuela span:last-child {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.portada__edicion {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: right;
+  opacity: 0.9;
+}
+
+.portada__centro { text-align: center; }
+
+.portada__antetitulo {
+  display: inline-block;
+  background: var(--negro);
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.portada__titulo {
+  font-size: clamp(4rem, 15vw, 9.5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 0 rgba(11, 21, 48, 0.35);
+}
+
+.portada__bajada {
+  font-family: var(--letra-titulos);
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+  margin: 12px 0 0;
+}
+
+.portada__collage {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.portada__dibujo {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+.portada__dibujo:nth-child(odd) { transform: rotate(-7deg); }
+.portada__dibujo:nth-child(even) { transform: rotate(6deg) translateY(10px); }
+.portada__dibujo:hover { transform: scale(1.12) rotate(0deg); }
+
+.portada__temas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.portada__temas li {
+  border-top: 3px solid var(--blanco);
+  padding-top: 8px;
+  font-family: var(--letra-titulos);
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.portada__temas strong {
+  display: block;
+  font-family: var(--letra-texto);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+.portada__autores {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--letra-titulos);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+}
+
+.portada__curso {
+  background: var(--blanco);
+  color: var(--azul-oscuro);
+  font-family: var(--letra-texto);
+  font-weight: 900;
+  border-radius: 999px;
+  padding: 4px 16px;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------
+   ÍNDICE
+   ------------------------------------------------------------ */
+.indice__intro { max-width: 62ch; color: var(--gris); }
+
+.indice__grupos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 48px;
+  margin-top: 28px;
+}
+
+.indice__seccion {
+  font-family: var(--letra-texto);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--azul);
+  display: inline-block;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+}
+
+.indice__lista { list-style: none; margin: 0; padding: 0; }
+
+.indice__entrada {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  background: none;
+  border: 0;
+  padding: 7px 4px;
+  text-align: left;
+  color: var(--tinta);
+  border-radius: 4px;
+}
+.indice__entrada:hover { background: var(--celeste); color: var(--azul-oscuro); }
+.indice__entrada--principal { font-weight: 800; }
+
+.indice__puntos {
+  flex: 1;
+  min-width: 20px;
+  border-bottom: 2px dotted var(--celeste-2);
+  transform: translateY(-4px);
+}
+
+.indice__numero {
+  font-family: var(--letra-titulos);
+  font-weight: 700;
+  color: var(--azul);
+}
+
+/* ------------------------------------------------------------
+   ARTÍCULOS
+   ------------------------------------------------------------ */
+.articulo__portadilla {
+  border-bottom: 1px solid var(--celeste-2);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.articulo__numero {
+  display: inline-block;
+  background: var(--negro);
+  color: var(--blanco);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+
+.articulo__titulo {
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  font-weight: 900;
+  color: var(--marino);
+  max-width: 20ch;
+}
+
+.articulo__bajada {
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--gris);
+  margin: 12px 0 0;
+}
+
+.articulo__cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 48px;
+}
+
+.articulo__texto p { max-width: 68ch; }
+
+/* Letra capital al comienzo del artículo */
+.articulo__portadilla + .articulo__cuerpo .seccion:first-child > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--letra-titulos);
+  font-weight: 900;
+  font-size: 3.6em;
+  line-height: 0.85;
+  padding: 6px 10px 0 0;
+  color: var(--azul);
+}
+
+.articulo__costado {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 8px;
+}
+
+.costado__dibujo {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 10px rgba(11, 21, 48, 0.18));
+}
+.costado__dibujo--0 { transform: rotate(-5deg); }
+.costado__dibujo--1 { transform: rotate(6deg); width: 80%; margin-left: auto; }
+
+.seccion + .seccion { margin-top: 36px; }
+
+.seccion__pregunta {
+  font-size: 1.5rem;
+  color: var(--azul-oscuro);
+  margin-bottom: 14px;
+  padding-left: 16px;
+  border-left: 5px solid var(--azul);
+}
+
+.destacado {
+  margin: 8px 0 22px;
+  padding: 18px 22px;
+  background: var(--celeste);
+  border-left: 6px solid var(--negro);
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: var(--marino);
+}
+.destacado::before { content: '“'; color: var(--azul); }
+.destacado::after { content: '”'; color: var(--azul); }
+
+.etiquetas {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.etiquetas li {
+  background: var(--celeste);
+  color: var(--azul-oscuro);
+  border: 1.5px solid var(--celeste-2);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.formula {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 8px 0 24px;
+  padding: 20px 12px;
+  background: var(--celeste);
+  border-radius: 10px;
+}
+.formula__parte { position: relative; }
+.formula figure { margin: 0; text-align: center; }
+.formula img { height: 96px; width: 100%; object-fit: contain; margin-bottom: 8px; }
+.formula figcaption { font-weight: 800; font-size: 0.9rem; color: var(--azul-oscuro); line-height: 1.25; }
+.formula__mas {
+  position: absolute;
+  left: -14px;
+  top: 34px;
+  font-family: var(--letra-titulos);
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--azul);
+}
+
+.checklist {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--celeste);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+.checklist__tilde {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--azul);
+  color: var(--blanco);
+  font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------
+   EJEMPLOS DE DESAYUNOS Y MERIENDAS
+   ------------------------------------------------------------ */
+.ejemplos__columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ejemplos__bloque { border-radius: 10px; padding: 22px; }
+.ejemplos__bloque--desayuno { background: var(--celeste); }
+.ejemplos__bloque--merienda { border: 2px solid var(--celeste-2); }
+
+.ejemplos__lista { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+
+.ejemplos__tarjeta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  column-gap: 12px;
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(11, 21, 48, 0.12);
+}
+.ejemplos__tarjeta img {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  align-self: center;
+}
+.ejemplos__opcion, .ejemplos__texto { grid-column: 1; }
+.ejemplos__opcion {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+.ejemplos__texto { font-weight: 600; line-height: 1.4; }
+.ejemplos__cierre { font-style: italic; color: var(--gris); margin: 0; }
+
+/* ------------------------------------------------------------
+   RECETAS
+   ------------------------------------------------------------ */
+.receta__seccion {
+  font-family: var(--letra-titulos);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gris);
+  border-bottom: 1px solid var(--celeste-2);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+.receta__seccion strong { color: var(--azul-oscuro); font-style: normal; }
+
+.receta__cabecera {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.receta__dibujos {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--celeste);
+}
+.receta__dibujos img {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 12px rgba(11, 21, 48, 0.22));
+}
+.receta__dibujos img:nth-child(2) {
+  inset: auto -4% -2% auto;
+  width: 44%;
+  height: 44%;
+  transform: rotate(10deg);
+}
+
+.receta__nombre {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 900;
+  color: var(--marino);
+  margin-bottom: 10px;
+}
+.receta__descripcion { font-size: 1.1rem; color: var(--gris); }
+
+.receta__etiquetas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.receta__etiquetas li {
+  background: var(--azul);
+  color: var(--blanco);
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 3px 12px;
+}
+
+.receta__cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.receta__cuerpo h3 {
+  font-size: 1.4rem;
+  color: var(--azul-oscuro);
+  margin-bottom: 12px;
+}
+
+.receta__ingredientes {
+  background: var(--celeste);
+  border-radius: 12px;
+  padding: 22px;
+}
+.receta__ingredientes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.receta__ayuda { font-size: 0.88rem; color: var(--gris); margin-bottom: 12px; }
+.receta__contador { margin: 14px 0 0; font-weight: 800; color: var(--azul); font-size: 0.9rem; }
+
+.ingrediente {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--blanco);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: background 0.2s;
+}
+.ingrediente input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--azul);
+  flex-shrink: 0;
+}
+.ingrediente--listo span { text-decoration: line-through; color: var(--gris); }
+
+.receta__pasos ol { list-style: none; counter-reset: paso; margin: 0; padding: 0; }
+.receta__pasos li {
+  counter-increment: paso;
+  position: relative;
+  padding: 2px 0 18px 56px;
+  min-height: 56px;
+}
+.receta__pasos li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: var(--letra-titulos);
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+.receta__pasos li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 44px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--celeste-2);
+}
+
+/* ------------------------------------------------------------
+   CONTRATAPA
+   ------------------------------------------------------------ */
+.contratapa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 8px;
+}
+.contratapa__titulo {
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  font-style: italic;
+  font-weight: 900;
+  color: var(--azul-oscuro);
+  margin-top: 12px;
+}
+.contratapa__bajada { font-family: var(--letra-titulos); font-size: 1.2rem; color: var(--gris); }
+
+.contratapa__datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 860px;
+  margin: 16px 0 28px;
+}
+.contratapa__datos div { background: var(--celeste); border-radius: 10px; padding: 12px; }
+.contratapa__datos dt {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+.contratapa__datos dd { margin: 4px 0 0; font-weight: 800; }
+
+.contratapa__dibujos { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.contratapa__dibujos img { height: 80px; width: 80px; object-fit: contain; }
+.contratapa__dibujos img:nth-child(odd) { transform: rotate(-6deg); }
+.contratapa__dibujos img:nth-child(even) { transform: rotate(6deg); }
+
+.contratapa__gracias {
+  margin-top: 24px;
+  font-family: var(--letra-script);
+  font-size: 2.2rem;
+  color: var(--azul-oscuro);
+}
+
+/* ------------------------------------------------------------
+   BARRA DE NAVEGACIÓN
+   ------------------------------------------------------------ */
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--alto-nav);
+  background: var(--marino);
+  color: var(--blanco);
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -6px 20px rgba(11, 21, 48, 0.25);
+}
+
+.nav__progreso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--celeste-2), var(--blanco));
+  transition: width 0.35s ease;
+}
+
+.nav__contenido {
+  height: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav__boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: var(--blanco);
+  font-weight: 800;
+  transition: background 0.2s, transform 0.1s;
+}
+.nav__boton:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
+.nav__boton:active:not(:disabled) { transform: scale(0.96); }
+.nav__boton:disabled { opacity: 0.3; cursor: default; }
+
+.nav__boton--principal { background: var(--blanco); color: var(--azul-oscuro); border-color: var(--blanco); }
+.nav__boton--principal:hover:not(:disabled) { background: var(--celeste); }
+
+.nav__centro { display: flex; align-items: center; gap: 14px; }
+
+.nav__indice {
+  background: none;
+  border: 0;
+  color: var(--blanco);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: 44px;
+}
+
+.nav__contador { font-family: var(--letra-titulos); font-weight: 700; opacity: 0.85; }
+
+/* ------------------------------------------------------------
+   RESPONSIVE: TABLETS
+   ------------------------------------------------------------ */
+@media (max-width: 860px) {
+  .hoja { padding: 32px 32px 60px; }
+  .hoja__pie { right: 32px; }
+  .articulo__cuerpo { grid-template-columns: minmax(0, 1fr) 140px; gap: 28px; }
+  .portada__collage { grid-template-columns: repeat(4, 1fr); }
+  .portada__dibujo { height: 100px; }
+  .receta__cabecera { grid-template-columns: 180px 1fr; }
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE: CELULARES
+   ------------------------------------------------------------ */
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+
+  .escenario { padding: 0 0 var(--alto-nav); }
+
+  .hoja {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 18px 56px;
+    min-height: calc(100dvh - var(--alto-nav));
+  }
+  .hoja__cabecera { margin-bottom: 22px; }
+  .hoja__pie { right: 18px; bottom: 16px; }
+
+  .hoja--portada { padding: 20px 18px 28px; }
+  .portada { gap: 20px; }
+  .portada__arriba { flex-wrap: wrap; gap: 10px 12px; }
+  .portada__escudo { width: 72px; height: 65px; }
+  .portada__datos-escuela { flex: 1; min-width: 0; }
+  .portada__datos-escuela span:first-child { font-size: 1.55rem; }
+  .portada__datos-escuela span:last-child { font-size: 0.7rem; letter-spacing: 0.06em; }
+  .portada__edicion { flex-basis: 100%; text-align: left; margin-left: 0; }
+  .portada__collage { gap: 6px; }
+  .portada__dibujo { height: 80px; }
+  .portada__temas { grid-template-columns: 1fr; gap: 10px; }
+  .portada__autores { flex-direction: column; align-items: flex-start; }
+
+  .indice__grupos { grid-template-columns: 1fr; gap: 20px; }
+
+  /* En el celular los dibujos del costado pasan arriba, en fila */
+  .articulo__cuerpo { grid-template-columns: 1fr; gap: 8px; }
+  .articulo__costado {
+    position: static;
+    order: -1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    padding: 0 0 12px;
+  }
+  .costado__dibujo { width: auto; height: 90px; max-height: 90px; }
+  .costado__dibujo--1 { width: auto; margin-left: 0; }
+
+  .seccion__pregunta { font-size: 1.3rem; }
+  .destacado { font-size: 1.15rem; padding: 14px 16px; }
+
+  .formula { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+  .formula__mas { display: none; }
+  .formula img { height: 78px; }
+
+  .checklist { grid-template-columns: 1fr; }
+
+  .ejemplos__columnas { grid-template-columns: 1fr; }
+  .ejemplos__bloque { padding: 16px; }
+
+
+  .receta__cabecera { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+  .receta__dibujos { width: 200px; margin: 0 auto; }
+  .receta__etiquetas { justify-content: center; }
+  .receta__cuerpo { grid-template-columns: 1fr; gap: 24px; }
+
+
+  .nav__contenido { padding: 0 10px; gap: 8px; }
+  .nav__boton { padding: 0 14px; }
+  .nav__centro { gap: 10px; }
+}
+
+@media (max-width: 400px) {
+  .nav__boton:not(.nav__boton--principal) .nav__texto { display: none; }
+  .nav__boton--principal .nav__texto { font-size: 0.9rem; }
+}
